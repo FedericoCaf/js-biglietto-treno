@@ -1,0 +1,27 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#output, #codeOutput, #ageOutput{
+  background-color: black;
+  text-align: center;
+  color:turquoise;
+}
+
+#output p{
+  font-size: 50px;
+  color:lime;
+}
+
+#output h3{
+  padding-top: 50px;
+}
+
+#output h1{
+  padding: 30px 0;
+}
+
+
+
