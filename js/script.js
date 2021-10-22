@@ -1,6 +1,8 @@
-const userKm = prompt('Quanti chilometri vuoi percorrere?');
-const userAge = prompt('Quanti anni hai?');
-const codiceSconto = prompt('Inserisci un codice sconto')
+const userKm = parseInt(prompt('Quanti chilometri vuoi percorrere?')) ;
+const userAge = parseInt(prompt('Quanti anni hai?')) ;
+const scontoSiNo = prompt ('Hai un codice sconto?')
+let codiceSconto = "";
+
 
 let ticketPrice = userKm * 0.21;
 
@@ -24,16 +26,21 @@ if(isNaN(userAge)){
  errorMsg = 'Ops! Errore nel formato, si accettano soltanto numeri';
 }
 
-if(codiceSconto !== 'SCONTO20'){
-  validCode = false;
-  errorCode = "Il codice inserito non è valido"
-}
+if(scontoSiNo==='si' || scontoSiNo==='SI' || scontoSiNo==='Si' || scontoSiNo==='sI'){
 
-if(codiceSconto === 'SCONTO20' && userAge > 20){
-  validAge = false;
-  errorAge = "Codice non valido per la tua fascia d'età"
-}
+  codiceSconto = prompt('Inserisci un codice sconto');
 
+  if(codiceSconto !== 'SCONTO20'){
+    validCode = false;
+    errorCode = "Il codice inserito non è valido"
+  }
+  
+  if(codiceSconto === 'SCONTO20' && userAge > 20){
+    validAge = false;
+    errorAge = "Codice non valido per la tua fascia d'età"
+  }
+
+}
 
 console.log('datiValidi', datiValidi);
 console.log('errorMsg', errorMsg);
@@ -71,7 +78,7 @@ if(userAge < 18){
   <h3>Hai chiesto di percorrere ${userKm} km </h3>
   <h3>Hai ${userAge} anni e per questo hai diritto al 20% di sconto! </h3>
   <h1>Il prezzo finale del tuo biglietto è di: </h1>
-  <p>${parseFloat(ticketPrice).toFixed(2)} €</p> 
+  <p>${ticketPrice.toFixed(2)} €</p> 
   
   `
 }
@@ -81,7 +88,7 @@ else if(userAge > 64){
   <h3>Hai chiesto di percorrere ${userKm} km </h3>
   <h3>Hai ${userAge} anni e per questo hai diritto al 40% di sconto! </h3>
   <h1>Il prezzo finale del tuo biglietto è di: </h1>
-  <p> ${parseFloat(ticketPrice).toFixed(2)} €</p>
+  <p> ${ticketPrice.toFixed(2)} €</p>
   
   `
 }
@@ -91,7 +98,7 @@ else{
   `
   <h3>Hai chiesto di percorrere ${userKm} km </h3>
   <h1>Il prezzo finale del tuo biglietto è di: </h1>
-  <p> ${parseFloat(ticketPrice).toFixed(2)} €</p>
+  <p> ${ticketPrice.toFixed(2)} €</p>
   
   `
 }
@@ -103,5 +110,3 @@ if(!datiValidi){
 document.getElementById('codeOutput').innerHTML = codeOutput;
 document.getElementById('ageOutput').innerHTML = ageOutput;
 document.getElementById('output').innerHTML = finalPrice;
-
-// console.log(parseFloat(ticketPrice).toFixed(2));
